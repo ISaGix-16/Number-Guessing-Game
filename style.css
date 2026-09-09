@@ -1,0 +1,558 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #ffffff;
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(124, 58, 237, 0.28),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(168, 85, 247, 0.22),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #08030f,
+            #160b25,
+            #0d0618
+        );
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(168, 85, 247, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(168, 85, 247, 0.025) 1px,
+            transparent 1px
+        );
+    background-size: 45px 45px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+nav {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(8, 3, 15, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.18);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    padding: 11px 28px;
+    color: #e9d5ff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    border: 1px solid rgba(168, 85, 247, 0.6);
+    border-radius: 30px;
+    background: rgba(124, 58, 237, 0.08);
+    box-shadow:
+        0 0 18px rgba(124, 58, 237, 0.08);
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background: rgba(124, 58, 237, 0.18);
+    border-color: #a855f7;
+    box-shadow:
+        0 0 25px rgba(168, 85, 247, 0.35);
+    transform: translateY(-2px);
+}
+
+#wrapper {
+    position: relative;
+    z-index: 1;
+    width: min(860px, 92%);
+    margin: 50px auto;
+    padding: 55px 65px 50px;
+    text-align: center;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35, 17, 58, 0.95),
+            rgba(17, 7, 30, 0.97)
+        );
+    border: 1px solid rgba(168, 85, 247, 0.55);
+    border-radius: 28px;
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.6),
+        0 0 55px rgba(124, 58, 237, 0.10),
+        inset 0 1px 0 rgba(216, 180, 254, 0.08);
+    overflow: hidden;
+    animation: cardAppear 0.7s ease;
+}
+
+#wrapper::before {
+    content: "";
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 300px;
+    background: rgba(139, 92, 246, 0.20);
+    filter: blur(90px);
+    pointer-events: none;
+}
+
+#wrapper h1 {
+    position: relative;
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #c4b5fd,
+            #a855f7
+        );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#wrapper > p {
+    position: relative;
+    color: #b8a7c7;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+#wrapper > p + p {
+    margin-top: 3px;
+}
+
+.form {
+    position: relative;
+    width: 100%;
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#guess {
+    position: relative;
+    display: block;
+    margin-bottom: 18px;
+    color: #c084fc;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+#guess::before,
+#guess::after {
+    content: "";
+    display: inline-block;
+    width: 70px;
+    height: 2px;
+    margin: 0 25px;
+    vertical-align: middle;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #a855f7
+        );
+}
+
+#guess::after {
+    background:
+        linear-gradient(
+            90deg,
+            #a855f7,
+            transparent
+        );
+}
+
+#guessField {
+    width: 610px;
+    max-width: 100%;
+    height: 82px;
+    padding: 0 25px;
+    background: #08050d;
+    color: #ffffff;
+    border: 2px solid #4c2a69;
+    border-radius: 18px;
+    outline: none;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    caret-color: #a855f7;
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.45);
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+#guessField::placeholder {
+    color: #75677f;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+#guessField:focus {
+    border-color: #a855f7;
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 0 4px rgba(168, 85, 247, 0.12),
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(168, 85, 247, 0.18);
+}
+
+.guessSubmit {
+    width: 610px;
+    max-width: 100%;
+    height: 72px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            135deg,
+            #9333ea,
+            #6d28d9
+        );
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow:
+        0 12px 30px rgba(124, 58, 237, 0.35);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+.guessSubmit:hover {
+    transform: translateY(-4px);
+    filter: brightness(1.1);
+    box-shadow:
+        0 18px 40px rgba(139, 92, 246, 0.5);
+}
+
+.guessSubmit:active {
+    transform: scale(0.97);
+}
+
+.resultParas {
+    position: relative;
+    margin-top: 45px;
+    padding: 25px 30px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19, 9, 32, 0.97),
+            rgba(10, 5, 18, 0.99)
+        );
+    border: 1px solid rgba(168, 85, 247, 0.20);
+    border-radius: 22px;
+    text-align: left;
+    box-shadow:
+        inset 0 1px 0 rgba(216, 180, 254, 0.04);
+}
+
+.resultParas > p {
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 5px;
+    color: #b8a7c7;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.resultParas > p:last-of-type {
+    border-bottom: none;
+}
+
+.guesses {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+    text-align: right;
+    word-break: break-word;
+}
+
+.lastResult {
+    min-width: 48px;
+    height: 42px;
+    padding: 0 14px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #d8b4fe;
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    font-size: 18px;
+    font-weight: 900;
+    box-shadow:
+        0 0 15px rgba(139, 92, 246, 0.06);
+}
+
+.lowOrHi {
+    min-height: 60px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center !important;
+    margin-top: 8px;
+    padding: 15px !important;
+    border-bottom: none !important;
+    color: #c084fc !important;
+    text-align: center !important;
+}
+
+.lowOrHi h2 {
+    margin: 0;
+    color: #c084fc;
+    font-size: 20px;
+    font-weight: 900;
+    text-shadow:
+        0 0 20px rgba(168, 85, 247, 0.25);
+    animation: messageAppear 0.3s ease;
+}
+
+.button {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.button h2 {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+    height: 65px;
+    padding: 0 30px;
+    border-radius: 16px;
+    background:
+        linear-gradient(
+            135deg,
+            #9333ea,
+            #6d28d9
+        );
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow:
+        0 12px 30px rgba(124, 58, 237, 0.3);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+.button h2:hover {
+    transform: translateY(-4px);
+    filter: brightness(1.1);
+    box-shadow:
+        0 18px 40px rgba(139, 92, 246, 0.5);
+}
+
+.button h2:active {
+    transform: scale(0.97);
+}
+
+#guessField:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.guessSubmit:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;                                                                       
+        transform: translateY(0);
+    }
+}
+
+/* ======================================== TABLET ======================================== */
+
+@media (max-width: 800px) {
+
+    #wrapper {
+        width: 92%;
+        padding: 45px 35px;
+    }
+
+    #wrapper h1 {
+        font-size: 3rem;
+    }
+
+    #guess::before,
+    #guess::after {
+        width: 35px;
+        margin: 0 12px;
+    }
+
+    #guessField,
+    .guessSubmit {
+        width: 100%;
+    }
+}
+
+
+/* ======================================== MOBILE ======================================== */
+
+@media (max-width: 500px) {
+
+    nav {
+        height: 60px;
+    }
+
+    nav a {
+        padding: 9px 22px;
+        font-size: 14px;
+    }
+
+    #wrapper {
+        width: 94%;
+        margin: 30px auto;
+        padding: 35px 18px;
+        border-radius: 22px;
+    }
+
+    #wrapper h1 {
+        font-size: 2.1rem;
+        letter-spacing: -1px;
+    }
+
+    #wrapper > p {
+        font-size: 14px;
+    }
+
+    .form {
+        margin-top: 35px;
+    }
+
+    #guess {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    #guess::before,
+    #guess::after {
+        display: none;
+    }
+
+    #guessField {
+        height: 62px;
+        font-size: 21px;
+        border-radius: 14px;
+    }
+
+    #guessField::placeholder {
+        font-size: 15px;
+    }
+
+    .guessSubmit {
+        height: 60px;
+        border-radius: 14px;
+        font-size: 16px;
+    }
+
+    .resultParas {
+        margin-top: 35px;
+        padding: 18px 15px;
+        border-radius: 18px;
+    }
+
+    .resultParas > p {
+        min-height: 50px;
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .guesses {
+        max-width: 55%;
+        font-size: 14px;
+    }
+
+    .lastResult {
+        min-width: 40px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .lowOrHi h2 {
+        font-size: 16px;
+    }
+
+    .button h2 {
+        width: 100%;
+        min-width: 0;
+        height: 58px;
+        font-size: 16px;
+    }
+}
