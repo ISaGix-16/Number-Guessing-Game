@@ -4,9 +4,13 @@ A simple and interactive **Number Guessing Game** built using HTML and JavaScrip
 
 The player has to guess a randomly generated number between **1 and 100**. The player gets a maximum of **10 attempts** to guess the correct number, with hints provided after each incorrect guess.
 
+## 🚀 Live Demo
+
+🎮 **[Play the Number Guessing Game](https://number-guessing-game-rosy-psi.vercel.app/)**
+
 ## 📌 About the Project
 
-The **Number Guessing Game** is a beginner-friendly JavaScript project created to practice **DOM manipulation, event handling, form handling, input validation, functions, conditional statements, arrays, and random number generation**.
+The **Number Guessing Game** is a beginner-friendly JavaScript project created to practice **DOM manipulation, event handling, form handling, input validation, functions, arrays, conditional statements, and random number generation**.
 
 The game generates a random number between 1 and 100. The user enters a guess, and the game provides feedback indicating whether the guessed number is **too high** or **too low**.
 
@@ -18,7 +22,7 @@ A **Start New Game** option is provided after the game ends so the player can pl
 
 * 🎲 Generates a random number between 1 and 100
 * 🎯 Allows the user to guess the number
-* 🔢 Maximum of 10 attempts per game
+* 🔢 Maximum of 10 attempts
 * ✅ Validates user input
 * 🚫 Prevents invalid values
 * ⚠️ Displays an alert for invalid input
@@ -28,11 +32,12 @@ A **Start New Game** option is provided after the game ends so the player can pl
 * 🏆 Displays a success message when the correct number is guessed
 * 💀 Reveals the random number when the game is over
 * 🔄 Includes a **Start New Game** option
-* ⚡ Updates the game dynamically without refreshing the page
+* ⚡ Updates the game dynamically without refreshing the webpage
 
 ## 🛠️ Technologies Used
 
 * **HTML5** – For creating the structure of the game and form
+* **CSS3** – Used for the basic presentation of the webpage
 * **JavaScript** – For game logic, input validation, random number generation, event handling, and DOM manipulation
 
 ## 🚀 How to Run the Project
@@ -90,7 +95,7 @@ Number-Guessing-Game/
    * **Lower** than the random number → a "Too Low" message is displayed.
    * **Higher** than the random number → a "Too High" message is displayed.
    * **Equal** to the random number → the player wins.
-9. After 10 unsuccessful attempts, the game ends and reveals the random number.
+9. After the attempts are exhausted, the game ends and reveals the random number.
 10. The player can start a new game using **Start New Game**.
 
 ## 🧠 JavaScript Concepts Used
@@ -165,7 +170,7 @@ Some possible improvements for this project are:
 
 ### 🟢 Completed
 
-This project was created as part of my practice with **HTML and JavaScript**.
+This project was created as part of my practice with **HTML, CSS, and JavaScript** and is currently deployed on **Vercel**.
 
 ## 👨‍💻 Author
 
